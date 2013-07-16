@@ -1,0 +1,57 @@
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
+	<meta name="description" content="Aplicação Modelo">
+	<meta name="author" content="PROCERGS">
+	<title>PROCERGS</title>
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="../bootstrap/css/bootstrap-responsive.css">-->
+	<link rel="stylesheet" href="../js/datepicker/datepicker.css">
+	<link rel="stylesheet" href="../js/multiselect/bootstrap-multiselect.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../js/jsrender.js"></script>
+	<script src="../js/holder.js"></script>
+	<script src="../js/jquery.uitablefilter.js"></script>
+	<script src="../js/datepicker/datepicker.js"></script>
+	<script src="../js/multiselect/bootstrap-multiselect.js"></script>
+	<script src="../js/custom.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		// define o efeito de "loading"
+		$("body").append("<div id='div-loading'>Carregando</div>");
+		$(document).ajaxStart(function() {
+			$("#div-loading").show();
+		}).ajaxStop(function() {
+			$("#div-loading").hide();
+		});
+
+		// intercepta todas as chamadas AJAX com sucesso e verifica se usuário pode prosseguir
+		$(document).ajaxSuccess(function(event, xhr, settings) {
+			try {
+				if (obj = JSON && JSON.parse(xhr.responseText) || $.parseJSON(xhr.responseText)) {
+					if (obj.redirect == 1) {
+						location = "../pages/login.php";
+					}
+				}
+			} catch (e) {}
+		});
+
+
+		// carga do menu
+		$.ajax({ url: "../includes/menu.html",
+				 cache: false,
+		         success: function (data) {
+		             $('body').prepend(data);
+		             $.getJSON("../services/login-info.php", function(data) {
+		             	$("#loginPlaceholder").append(data.usuario);
+		             });
+		         },
+		         dataType: 'html'
+		});
+
+		// ajusta largura da coluna dos checkboxes nas tabelas
+		$(".table th:first input[type=checkbox]").parent().css("width", "1px");
+
+	});
+	</script>

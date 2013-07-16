@@ -1,0 +1,70 @@
+#div-loading {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 3px;
+  background-color: #FF0000;
+  color: #FFFFFF;
+}
+
+.procergs-icon {
+  padding: 0px 10px 10px 0;
+  text-align: center;
+  float: left;
+}
+
+body {
+  padding-bottom: 40px;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.table {
+  margin-top: 5px;
+}
+
+.cab {
+  height: 60px;
+  background: url(../images/cab.jpg);
+}
+
+@media (max-width: 979px) {
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    position: static;
+  }
+  body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+    /*margin-left: 0px;
+    margin-right: 0px;*/
+  }
+  body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+  .btn-group {
+    white-space: normal;
+  }
+  .btn-group button {
+    text-align: left;
+  }
+
+  .modal, .modal.fade.in, .modal.fade {
+    width: 94%;
+    left: 3%;
+    right: 3%;
+    margin-right: 0px;
+    margin-left: 0px;
+    top: 10px;
+  }
+}
