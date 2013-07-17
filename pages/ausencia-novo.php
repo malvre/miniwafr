@@ -1,4 +1,7 @@
 <?php
+// Arquivo de teste. Desconsiderar
+
+
 include_once("../includes/common.php");
 ?>
 <!DOCTYPE HTML>
