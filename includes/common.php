@@ -217,7 +217,7 @@ class DBH extends PDO {
 
 	public static function getRow($sql) {
 		$db = new DBH();
-		$row = $db->query($sql)->fetch();
+		$row = $db->query($sql)->fetch(PDO::FETCH_OBJ);
 		$db = null;
 		return $row;
 	}
