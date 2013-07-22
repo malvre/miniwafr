@@ -15,9 +15,7 @@ $sql = "SELECT usuario.*, departamento.nome_departamento, date_format(data_cadas
 		$where .
 		"ORDER BY usuario.nome_usuario";
 
-$rows = DBH::getRows($sql);
-
-$output["itens"] = $rows;
+$output["itens"] = DBH::getRows($sql);
 $output["mensagem"] = Where::getMensagemFiltro();
 
 echo json_encode($output);

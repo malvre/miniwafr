@@ -209,7 +209,7 @@ class DBH extends PDO {
 
 	public static function getRows($sql, $qtde=300) {
 		$db = new DBH();
-		$rows = $db->query($sql . " limit $qtde")->fetchAll();
+		$rows = $db->query($sql . " limit $qtde")->fetchAll(PDO::FETCH_OBJ);
 		$db->debug();
 		$db = null;
 		return $rows;

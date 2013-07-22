@@ -6,7 +6,7 @@ $rows = DBH::getRows("SELECT usuario_id, nome_real FROM usuario WHERE nome_real 
 // lista de array key => value
 $array = array();
 foreach ($rows as $row) {
-	$array[$row["usuario_id"]] = $row["nome_real"];
+	$array[$row->usuario_id] = $row->nome_real;
 }
 
 echo json_encode($array);
